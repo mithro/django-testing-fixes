@@ -68,14 +68,16 @@ class TestSuiteRunner(simple.DjangoTestSuiteRunner):
 
 
 def create_suite(location, modulename):
-    suite = unittest.TestSuite()
-    for dirpath, dirnames, filenames in os.walk(location):
-        for filename in filenames:
-            remaining = dirpath[len(os.path.commonprefix([location, dirpath])):].replace('/', '.')
-            test = "%s%s.%s" % (modulename, remaining, filename[:-3])
+    def suite():
+        suite = unittest.TestSuite()
+        for dirpath, dirnames, filenames in os.walk(location):
+            for filename in filenames:
+                remaining = dirpath[len(os.path.commonprefix([location, dirpath])):].replace('/', '.')
+                test = "%s%s.%s" % (modulename, remaining, filename[:-3])
 
-            # Unittest test
-            if filename.endswith('_test.py'):
-                suite.addTest(unittest.TestLoader().loadTestsFromName(test))
+                # Unittest test
+                if filename.endswith('_test.py'):
+                    suite.addTest(unittest.TestLoader().loadTestsFromName(test))
 
+        return suite
     return suite

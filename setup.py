@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 # vim: set ts=4 sw=4 et sts=4 ai:
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='django-testing-fixes',
@@ -15,7 +15,7 @@ setup(
     url='https://github.com/mithro/django-testing-fixes',
     download_url='https://github.com/mithro/django-testing-fixes/downloads',
     license='BSD',
-    packages=find_packages(exclude=('tests',)),
+    packages=["django_testing_fixes"],
     test_suite='tests',
     tests_require=[
         'django>=1.3,<1.4',

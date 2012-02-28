@@ -1,3 +1,5 @@
 *.pyc
 *.egg-info
 testing.sqlite3
+build
+dist

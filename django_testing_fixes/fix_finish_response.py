@@ -7,7 +7,6 @@ import socket
 
 from django.core.servers import basehttp
 
-
 def finish_response(self, f=basehttp.ServerHandler.finish_response):
     try:
         f(self)
